@@ -57,7 +57,8 @@ class PositionController extends Controller
     */
     public function edit(Positions $position)
     {
-        return view('positions.edit',compact('positions'));
+        $title ="Edit Data position";
+        return view('positions.edit',compact('position', 'title'));
     }
 
     /**
@@ -71,8 +72,8 @@ class PositionController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
+            'keterangan' => 'required',
+            'alias' => 'required',
         ]);
         
         $position->fill($request->post())->save();
