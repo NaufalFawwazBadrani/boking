@@ -19,6 +19,12 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{route('positions.index')}}">position</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{route('departements.index')}}">departemen</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         @if(auth()->user()->position == "0")

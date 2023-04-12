@@ -8,7 +8,7 @@ class PositionController extends Controller
 {
     public function index()
     {
-        $title = "Data Positions (data yang sudah login)";
+        $title = "Data Positions";
         $positions = Positions::orderBy('id','asc')->paginate(5);
         return view('positions.index', compact(['positions','title']));
     }
