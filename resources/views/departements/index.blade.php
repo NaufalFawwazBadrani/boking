@@ -1,3 +1,4 @@
+<?php use App\Models\User; ?>
 @extends('app')
 @section('content')
 @if(session('success'))
@@ -15,8 +16,8 @@
     <tr>
       <th scope="col">No</th>
       <th scope="col">Nama</th>
-      <th scope="col">location</th>
-      <th scope="col">manager_id</th>
+      <th scope="col">Location</th>
+      <th scope="col">Id Manager</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -25,13 +26,15 @@
     @foreach ($departements as $data)
     <tr>
       <td>{{ $no ++ }}</td>
-      <!-- <td>{{ $data->id }}</td> -->
       <td>{{ $data->name }}</td>
       <td>{{ $data->location }}</td>
-      <td>                 
-         @foreach ($managers->slice(0, 1) as $manager)
-              <selected value="{{ $manager->id }}">{{$manager->name}}</selected>
-         @endforeach</td>
+      <td>
+    @if($data->manager)
+      {{ $data->manager->name }}
+    @else
+      Tidak ada manager
+    @endif
+  </td>
       <td>
         <form action="{{ route('departements.destroy',$data->id) }}" method="Post">
           <a class="btn btn-primary" href="{{ route('departements.edit',$data->id) }}">Edit</a>

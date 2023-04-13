@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-6">
         @if($errors->any())
         @foreach($errors->all() as $err)
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <button class="btn btn-primary">Register</button>
-                <a class="btn btn-danger" href="{{ route('home') }}">Back</a>
+                <a class="btn btn-danger" href="{{ route('login') }}">Back</a>
             </div>
         </form>
     </div>

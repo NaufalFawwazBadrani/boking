@@ -31,7 +31,11 @@
                 @enderror
             </div>
         </div>
-        <button type="submit" class="btn btn-primary ml-3">Submit</button>
+        <div class="text-end mb-2">
+      <p></p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+      <a class="btn btn-warning text-end" href="{{ route('positions.index') }}"> Back</a>
+    </div>
     </div>
 </form>
 @endsection

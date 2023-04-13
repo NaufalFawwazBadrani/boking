@@ -11,14 +11,14 @@ class DepartmentController extends Controller
     {
         $title = 'Data Departments';
         $departements = Department::orderBy('id','Asc')->paginate(5);
-        $managers = User::where('position','Manager')->get();
+        $managers = User::where('position','1')->get();
         return view('departements.index', compact('departements','managers', 'title'));
     }
 
     public function create()
     {
         $title = 'Tambah Data Departments';
-        $managers = User::where('position','Manager')->get();
+        $managers = User::where('position','1')->get();
         return view('departements.create', compact('managers','title'));
     }
 
@@ -47,7 +47,7 @@ class DepartmentController extends Controller
         public function edit(Department $departement)
     {
         $title = 'Edit Departments';
-        $managers = User::where('position','Manager')->get();
+        $managers = User::where('position','1')->get();
         return view('departements.edit',compact('departement' ,'managers', 'title'));
     }
 
