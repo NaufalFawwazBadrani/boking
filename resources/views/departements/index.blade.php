@@ -17,7 +17,7 @@
       <th scope="col">No</th>
       <th scope="col">Nama</th>
       <th scope="col">Location</th>
-      <th scope="col">Id Manager</th>
+      <th scope="col">Manager Name</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -30,7 +30,7 @@
       <td>{{ $data->location }}</td>
       <td>
     @if($data->manager)
-      {{ $data->manager->name }}
+      {{ $data->manager->email }}
     @else
       Tidak ada manager
     @endif
