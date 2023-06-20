@@ -1,5 +1,4 @@
-<?php use App\Models\User; ?>
-@extends('app')
+@extends('home')
 @section('content')
 @if(session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -8,33 +7,31 @@
 </div>
 @endif
 <div class="text-end mb-2">
-  <a class="btn btn-success" href="{{ route('departements.create') }}"> Create Departement</a>
+  <a class="btn btn-light" href="{{ route('exportpdf') }}"> Cetak</a>
+  <a class="btn btn-success" href="{{ route('departements.create') }}"> Add Departement</a>
 </div>
-
-<table class="table">
-  <thead>
+<table id="example" class="table table-striped" style="width:100%">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">No</th>
       <th scope="col">Nama</th>
       <th scope="col">Location</th>
-      <th scope="col">Manager Name</th>
+      <th scope="col">Manager_id</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     @php $no = 1 @endphp
     @foreach ($departements as $data)
-    <tr>
+    <tr class="table-hover-color">
       <td>{{ $no ++ }}</td>
+      <!-- <td>{{ $data->id }}</td> -->
       <td>{{ $data->name }}</td>
       <td>{{ $data->location }}</td>
-      <td>
-    @if($data->manager)
-      {{ $data->manager->email }}
-    @else
-      Tidak ada manager
-    @endif
-  </td>
+      <td>{{
+        (isset($data->manager->name))?
+      $data->manager->name : 
+    'Tidak Ada'}}</td>
       <td>
         <form action="{{ route('departements.destroy',$data->id) }}" method="Post">
           <a class="btn btn-primary" href="{{ route('departements.edit',$data->id) }}">Edit</a>
@@ -47,4 +44,13 @@
     @endforeach
   </tbody>
 </table>
+@endsection
+
+
+@section('js')
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+  });
+</script>
 @endsection
